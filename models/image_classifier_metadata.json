@@ -1,0 +1,17 @@
+{
+  "model_name": "image_classifier",
+  "num_classes": 5,
+  "input_shape": [
+    224,
+    224,
+    3
+  ],
+  "class_names": [
+    "daisy",
+    "dandelion",
+    "roses",
+    "sunflowers",
+    "tulips"
+  ],
+  "saved_at": "2025-11-24T13:23:29.028108"
+}

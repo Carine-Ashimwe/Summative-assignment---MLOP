@@ -1,0 +1,3 @@
+# This file ensures the train directory is tracked by git
+# Place your training images in subdirectories named after classes
+

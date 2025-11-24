@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Image Classification Pipeline</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🖼️ ML Image Classification Pipeline</h1>
+            <p class="subtitle">End-to-End Machine Learning Pipeline with Retraining Capabilities</p>
+        </header>
+
+        <!-- Model Uptime Section -->
+        <section class="card">
+            <h2>📊 Model Status & Uptime</h2>
+            <div id="uptime-display" class="uptime-display">
+                <div class="status-indicator">
+                    <span id="status-dot" class="dot"></span>
+                    <span id="status-text">Loading...</span>
+                </div>
+                <div class="uptime-info">
+                    <div>
+                        <strong>Uptime:</strong>
+                        <span id="uptime-value">--</span>
+                    </div>
+                    <div>
+                        <strong>Loaded At:</strong>
+                        <span id="loaded-at">--</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prediction Section -->
+        <section class="card">
+            <h2>🔮 Image Prediction</h2>
+            <div class="prediction-section">
+                <div class="upload-area" id="prediction-upload">
+                    <input type="file" id="prediction-file" accept="image/*" style="display: none;">
+                    <div class="upload-content">
+                        <p>📁 Click to select an image or drag and drop</p>
+                        <p class="upload-hint">Supported formats: PNG, JPG, JPEG, GIF, BMP</p>
+                    </div>
+                </div>
+                <div id="prediction-preview" class="image-preview" style="display: none;">
+                    <img id="preview-img" src="" alt="Preview">
+                </div>
+                <button id="predict-btn" class="btn btn-primary" disabled>Predict</button>
+                <div id="prediction-result" class="result-box" style="display: none;"></div>
+            </div>
+        </section>
+
+        <!-- Batch Prediction Section -->
+        <section class="card">
+            <h2>📦 Batch Prediction</h2>
+            <div class="upload-area" id="batch-upload">
+                <input type="file" id="batch-files" accept="image/*" multiple style="display: none;">
+                <div class="upload-content">
+                    <p>📁 Select multiple images</p>
+                    <p class="upload-hint">Hold Ctrl/Cmd to select multiple files</p>
+                </div>
+            </div>
+            <button id="batch-predict-btn" class="btn btn-primary" disabled>Predict All</button>
+            <div id="batch-results" class="results-container" style="display: none;"></div>
+        </section>
+
+        <!-- Visualizations Section -->
+        <section class="card">
+            <h2>📈 Data Visualizations</h2>
+            <div class="visualizations">
+                <div class="chart-container">
+                    <h3>Class Distribution</h3>
+                    <canvas id="class-distribution-chart"></canvas>
+                    <p class="chart-interpretation">
+                        <strong>Interpretation:</strong> This chart shows the distribution of classes in the training dataset. 
+                        A balanced distribution ensures better model performance across all classes.
+                    </p>
+                </div>
+                <div class="chart-container">
+                    <h3>Model Performance Metrics</h3>
+                    <canvas id="performance-chart"></canvas>
+                    <p class="chart-interpretation">
+                        <strong>Interpretation:</strong> Training vs validation metrics over epochs. 
+                        Convergence and small gap indicate good model generalization.
+                    </p>
+                </div>
+                <div class="chart-container">
+                    <h3>Prediction Confidence Distribution</h3>
+                    <canvas id="confidence-chart"></canvas>
+                    <p class="chart-interpretation">
+                        <strong>Interpretation:</strong> Distribution of prediction confidences. 
+                        Higher values indicate more certain predictions, suggesting model confidence.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Upload Data for Retraining Section -->
+        <section class="card">
+            <h2>📤 Upload Data for Retraining</h2>
+            <div class="upload-section">
+                <p><strong>Instructions:</strong> Upload images organized by class. Use filename format: <code>classname_filename.jpg</code></p>
+                <div class="upload-area" id="retrain-upload">
+                    <input type="file" id="retrain-files" accept="image/*" multiple style="display: none;">
+                    <div class="upload-content">
+                        <p>📁 Select training images</p>
+                        <p class="upload-hint">Multiple files can be selected</p>
+                    </div>
+                </div>
+                <div id="upload-progress" class="progress-bar" style="display: none;">
+                    <div id="upload-progress-fill" class="progress-fill"></div>
+                </div>
+                <button id="upload-retrain-btn" class="btn btn-secondary" disabled>Upload Training Data</button>
+                <div id="upload-status" class="status-message"></div>
+            </div>
+        </section>
+
+        <!-- Retraining Section -->
+        <section class="card">
+            <h2>🔄 Model Retraining</h2>
+            <div class="retrain-section">
+                <p>Retrain the model with newly uploaded data</p>
+                <button id="retrain-btn" class="btn btn-warning">Trigger Retraining</button>
+                <div id="retrain-progress" class="progress-section" style="display: none;">
+                    <div class="progress-bar">
+                        <div id="retrain-progress-fill" class="progress-fill"></div>
+                    </div>
+                    <p id="retrain-status-message" class="status-message"></p>
+                </div>
+                <div id="retrain-result" class="result-box" style="display: none;"></div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>ML Image Classification Pipeline | Built with TensorFlow & Flask</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
+
