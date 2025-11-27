@@ -255,7 +255,7 @@ Test the API performance under load:
 
 ### Load Testing Results
 
-
+![Load testing charts](https://github.com/Carine-Ashimwe/Summative-assignment---MLOP/raw/main/data/locust_chart/total_requests_per_second.png)
 
 Expected metrics (varies based on hardware):
 - **Single Container**: ~50-100 req/s
