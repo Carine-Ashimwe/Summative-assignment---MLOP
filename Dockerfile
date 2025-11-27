@@ -31,10 +31,12 @@ EXPOSE 5000
 # Set environment variables
 ENV FLASK_APP=app.py
 ENV PYTHONUNBUFFERED=1
+ENV PORT=5000
+ENV WEB_CONCURRENCY=1
 
-# Health check
+# Health check (respect PORT)
 HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
-    CMD python -c "import requests; requests.get('http://localhost:5000/api/health')"
+    CMD python -c "import os, requests; port = os.environ.get('PORT', '5000'); requests.get(f'http://localhost:{port}/api/health')"
 
-# Run the application
-   CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--workers", "2", "--timeout", "180", "app:app"]
+# Run the application (single worker by default to reduce memory)
+CMD ["sh", "-c", "gunicorn --bind 0.0.0.0:${PORT:-5000} --workers ${WEB_CONCURRENCY:-1} --timeout 300 --graceful-timeout 300 app:app"]
