@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: ml-image-classifier
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: PORT
+        value: 5000
+
