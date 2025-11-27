@@ -318,7 +318,7 @@ See `requirements.txt` for all Python dependencies. Key dependencies:
 
 ## Video Demo
 
-[YouTube Link - To be added]
+[[YouTube Link]](https://www.youtube.com/watch?v=zgohUDb78AE)
 
 ##  URLs
 
