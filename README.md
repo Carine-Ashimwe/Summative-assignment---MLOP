@@ -2,7 +2,7 @@
 
 An end-to-end Machine Learning pipeline for image classification with deployment capabilities, retraining functionality, and comprehensive monitoring.
 
-## 📋 Project Overview
+## Project Overview
 
 This project demonstrates a complete ML pipeline including:
 - **Data Acquisition**: Load and organize image datasets
@@ -16,11 +16,11 @@ This project demonstrates a complete ML pipeline including:
 - **Load Testing**: Locust-based performance testing
 - **Docker Deployment**: Containerized application for scalability
 
-## 🎯 Use Case
+## Use Case
 
 Image classification using non-tabular data (images). The model can classify images into multiple categories using deep learning techniques.
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 ml-summative/
@@ -60,7 +60,7 @@ ml-summative/
 └── .dockerignore           # Docker ignore file
 ```
 
-## 🚀 Setup Instructions
+##  Setup Instructions
 
 ### Prerequisites
 
@@ -73,7 +73,7 @@ ml-summative/
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/Carine-Ashimwe/Summative-assignment---MLOP/
    cd ml-summative
    ```
 
@@ -124,7 +124,7 @@ ml-summative/
    python train_model.py  # (create if needed)
    ```
 
-## 🖥️ Running the Application
+## Running the Application
 
 ### Option 1: Run Flask App Directly
 
@@ -155,7 +155,7 @@ The API will be available at `http://localhost:5000`
 gunicorn --bind 0.0.0.0:5000 --workers 4 --timeout 120 app:app
 ```
 
-## 🌐 Web UI Features
+## Web UI Features
 
 Access the web interface at `http://localhost:5000`
 
@@ -170,7 +170,7 @@ The UI includes:
 4. **Upload Data**: Bulk upload images for retraining
 5. **Trigger Retraining**: Retrain model with new data
 
-## 📡 API Endpoints
+## API Endpoints
 
 ### Health & Status
 - `GET /api/health` - Health check endpoint
@@ -255,6 +255,8 @@ Test the API performance under load:
 
 ### Load Testing Results
 
+
+
 Expected metrics (varies based on hardware):
 - **Single Container**: ~50-100 req/s
 - **Multiple Containers**: Linear scaling
@@ -304,18 +306,7 @@ The UI provides three key visualizations:
 
 The `docker-compose.yml` file sets up multiple API instances for load balancing and scalability testing.
 
-### Cloud Deployment
-
-The application can be deployed to various cloud platforms:
-
-- **AWS**: Use ECS, EKS, or EC2 with Docker
-- **Google Cloud**: Use Cloud Run, GKE, or Compute Engine
-- **Azure**: Use Container Instances or AKS
-- **Heroku**: Use container registry
-
-Example deployment commands will be added in cloud-specific documentation.
-
-## 📝 Requirements
+## Requirements
 
 See `requirements.txt` for all Python dependencies. Key dependencies:
 - TensorFlow 2.15.0
@@ -325,17 +316,16 @@ See `requirements.txt` for all Python dependencies. Key dependencies:
 - scikit-learn
 - Matplotlib, Seaborn
 
-## 🎥 Video Demo
+## Video Demo
 
 [YouTube Link - To be added]
 
-## 🔗 URLs
+##  URLs
 
+- **Deployed url on render**: https://summative-assignment-mlop-1-n8hv.onrender.com/
 - **Local Development**: http://localhost:5000
 - **API Health Check**: http://localhost:5000/api/health
 - **Locust Dashboard**: http://localhost:8089
-
-## 🛠️ Development
 
 ### Running Tests
 
@@ -351,25 +341,6 @@ pytest
 - `src/prediction.py`: Prediction and inference logic
 - `app.py`: Flask API application with all endpoints
 
-## 📄 License
-
-[Add your license here]
-
-## 👥 Contributors
-
-[Add contributors here]
-
-## 🙏 Acknowledgments
-
-- TensorFlow team for the deep learning framework
-- Flask community for the web framework
-- MobileNetV2 pre-trained weights from ImageNet
-
-## Support
-
-For issues and questions, please open an issue on the GitHub repository.
-
----
 
 **Note**: Make sure to have sufficient training data (at least 100-200 images per class recommended) for good model performance.
 
