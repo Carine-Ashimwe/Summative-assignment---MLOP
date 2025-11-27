@@ -81,7 +81,7 @@ class ImagePreprocessor:
         
         # Return sorted class names for consistency
         unique_class_names = sorted(set(class_names))
-        print(f"\n✅ Successfully loaded {len(images)} images from {len(unique_class_names)} classes")
+        print(f"\n Successfully loaded {len(images)} images from {len(unique_class_names)} classes")
         
         return np.array(images), np.array(labels), unique_class_names
     
@@ -187,4 +187,3 @@ class ImagePreprocessor:
             datagen = ImageDataGenerator()
         
         return datagen
-
